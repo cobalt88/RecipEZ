@@ -45,7 +45,6 @@ function clearResultsArray() {
 function loadDrinkCards() {
   var drinks = searchResultsArr[0].drinks;
   searchResultsContainer.innerHTML = "";
-  console.log(drinks);
   //loop through data/drinks array
   for (var i = 0; i < 3; i++) {
     // quick fix so no code breaking for drinks less than 3
@@ -270,20 +269,6 @@ function advSearchFunction(data) {
 
   buildParamArray();
   buildAdvSearchURL(searchParamArr);
-
-  // console logs for individual search values, used for debugging.
-  // console.log(`keyword: ${keyword}`)
-  // console.log(`cuisine: ${cuisineString}`);
-  // console.log(`intolerance: ${intoleranceString}`);
-  // console.log(`include ingredients: ${includeIngredients}`);
-  // console.log(`exclude: ${excludeIngredients}`);
-  // console.log(`meal type: ${mealTypeString}`);
-  // console.log(`max-prep ${maxPrepTime}`);
-  // console.log(`max-calories: ${maxCalories}`);
-  // console.log(`max-sugar: ${maxSugar}`);
-  // console.log(`max carbs: ${maxCarbs}`);
-  // console.log(`max results: ${maxResults}`);
-  // console.log(`sort by: ${sortBy}`);
 }
 
 function buildAdvSearchURL(searchParamArr) {
@@ -304,7 +289,6 @@ const spoonacularAdvSearch = async (advSearchURL) => {
     let response = await fetch(advSearchURL);
     let data = await response.json();
     let resultsArr = data.results;
-    console.log("made it to new adv search arr");
     spoonacularIngredientsImg(resultsArr);
   } catch (err) {
     console.error(`Error in adv search: ${err}`);
@@ -313,10 +297,8 @@ const spoonacularAdvSearch = async (advSearchURL) => {
 //get the ingredients image using the ingredientWidget from spoontacular API
 const spoonacularIngredientsImg = async (resultsArr) => {
   try {
-    console.log("made it into new image function");
     let ingredientsArr = [];
     for (let i = 0; i < resultsArr.length; i++) {
-      // console.log('made it into image loop')
       var id = resultsArr[i].id;
       let apiURL = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.png?defaultCss=true&measure=us&apiKey=${spoonacular}`;
       let response = await fetch(apiURL);
@@ -325,7 +307,6 @@ const spoonacularIngredientsImg = async (resultsArr) => {
       resultsArr[i].ingredients = ingredientsArr[i];
       // Once all promises are resolved and the for loop reaches its end, pass the resultsArr into getFullRecipeInfo() to capture the remaining details needed to generate the recipe cards.
       if (i === resultsArr.length - 1) {
-        // console.log('made it to the end of new image function')
         spoonacularGetInfo(resultsArr);
       }
     }
@@ -336,14 +317,12 @@ const spoonacularIngredientsImg = async (resultsArr) => {
 
 // retrieves detailed information about the recipe using its ID number that was retrieved in the first API call spoonacularAdvSearch
 const spoonacularGetInfo = async (resultsArr) => {
-  console.log("made it into get info function");
   try {
     for (let i = 0; i < resultsArr.length; i++) {
       let id = resultsArr[i].id;
       let apiURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${spoonacular}`;
       let response = await fetch(apiURL);
       let data = await response.json();
-      console.log(data);
       resultsArr[i].fullInfo = data;
       // once all promises are resolved and the above for loop completes, load the final version of the resultsArr into the load food cards function.
       if (i === resultsArr.length - 1) {
@@ -426,7 +405,6 @@ function getFullRecipeInfo(resultsArr) {
 var drinkIdArr = [];
 
 function saveDrinksId(drinkId) {
-  console.log(drinkId);
   let id = drinkId;
   let key = "drinkId";
   drinkIdArr.push(id);
@@ -443,7 +421,6 @@ function saveDrinksId(drinkId) {
 var recipeIdArr = [];
 
 function saveRecipeId(recipeId) {
-  console.log(recipeId);
   let id = recipeId;
   let key = "recipeId";
   recipeIdArr.push(id);
@@ -476,7 +453,6 @@ $("#submit-btn").click(function () {
   } else if (selector === "drink") {
     getCocktail();
   } else {
-    console.log("nothing gets called");
   }
   $("#searchInput").val("");
 });
@@ -499,11 +475,9 @@ $("#searchResults").click(function (event) {
   if ("drinkid" in target.dataset === true) {
     let drinkId = target.dataset.drinkid;
     saveDrinksId(drinkId);
-    // console.log(target.dataset.drinkid)
   } else if ("recipeid" in target.dataset === true) {
     let recipeId = target.dataset.recipeid;
     saveRecipeId(recipeId);
-    // console.log(target.dataset.recipeid)
   } else {
     console.log("nothing is logged");
   }
