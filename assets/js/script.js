@@ -90,7 +90,7 @@ function loadDrinkCards() {
     //write html for drink cards and append them to the search container
     searchResultsContainer.innerHTML += `
     
-    <div class="card is-shady column is-4">
+    <div class="card is-shady column is-3">
       <div class="card-image has-text-centered">
         <i class="fa-solid fa-utensils"></i>
       </div>
@@ -103,7 +103,6 @@ function loadDrinkCards() {
             ${instructions}
             </p>
           </div>
-          <button>Save Drink</button>
         </div>
     </div>
       `;
