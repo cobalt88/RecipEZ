@@ -1,4 +1,3 @@
-
 var userInput = "";
 const submitDrink = document.getElementById("submit-btn");
 const submitRecipe = document.getElementById("submit-btn");
@@ -363,7 +362,7 @@ function loadFoodCards(resultsArr) {
   for (var i = 0; i < resultsArr.length; i++) {
     // replace the innerHTML of the cards container with a dynamically generated template literal
     searchResultsContainer.innerHTML += `
-    <div class="card is-shady column is-4">
+    <div class="card is-shady column is-3">
       <div class="card-image has-text-centered">
         <i class="fa-solid fa-utensils"></i>
       </div>
@@ -377,11 +376,7 @@ function loadFoodCards(resultsArr) {
             ${resultsArr[i].fullInfo.instructions}
           </p>
           <p><a href="${resultsArr[i].fullInfo.sourceUrl}">See Full Recipe</a></p>
-          <p>
-            <label for="favorite">Click to save favorite: </label>
-          </p>
         </div>
-        <button>Save Recipe</button>
       </div>
     </div>`;
   }
@@ -432,39 +427,36 @@ function getFullRecipeInfo(resultsArr) {
 var drinkIdArr = [];
 
 function saveDrinksId(drinkId) {
-
-  console.log(drinkId)
+  console.log(drinkId);
   let id = drinkId;
-  let key = "drinkId"
+  let key = "drinkId";
   drinkIdArr.push(id);
   localStorage.setItem(key, JSON.stringify(drinkIdArr));
-  
+
   loadDrinksId();
 }
 
-loadDrinksId => {
-  idArr = JSON.parse(localStorage.getItem("drinkId"))
+(loadDrinksId) => {
+  idArr = JSON.parse(localStorage.getItem("drinkId"));
   drinkIdArr = idSearchURL;
-}
+};
 
 var recipeIdArr = [];
 
 function saveRecipeId(recipeId) {
-
-  console.log(recipeId)
+  console.log(recipeId);
   let id = recipeId;
-  let key = "recipeId"
+  let key = "recipeId";
   recipeIdArr.push(id);
   localStorage.setItem(key, JSON.stringify(recipeIdArr));
-  
+
   loadrecipesId();
 }
 
-loadRecipesId => {
-  idArr = JSON.parse(localStorage.getItem("recipeId"))
+(loadRecipesId) => {
+  idArr = JSON.parse(localStorage.getItem("recipeId"));
   recipeIdArr = idSearchURL;
-}
-
+};
 
 //event listener for the advanced search form (food only)
 $("#adv-search-btn").click(function () {
