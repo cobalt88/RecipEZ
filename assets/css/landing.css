@@ -138,6 +138,10 @@ footer {
   margin: auto;
 }
 
+.footer-links li a {
+  color: black;
+}
+
 #footer-column {
   margin: auto;
   display: flex;
