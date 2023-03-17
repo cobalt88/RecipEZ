@@ -153,3 +153,21 @@ footer {
   flex-direction: column;
   align-items: center;
 }
+
+@media (max-width: 650px) {
+  .hero-body {
+    max-height: 275px;
+  }
+}
+
+@media (max-width: 475px) {
+  .hero-body {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 370px) {
+  .hero-body {
+    max-height: 150px;
+  }
+}
