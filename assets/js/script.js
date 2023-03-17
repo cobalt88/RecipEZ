@@ -11,7 +11,7 @@ var idSearchURL = [];
 var spoonacular = "2bb10ff172ca4ab1b575e13c4f01a5c6";
 
 // call cocktail api
-function getCocktail() {
+function getCocktail(searchInput) {
   var drinkAPI =
     "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchInput;
   fetch(drinkAPI)
@@ -451,7 +451,7 @@ $("#submit-btn").click(function () {
     // spoontacularAdvSearch(advSearchURL);
     spoonacularAdvSearch(advSearchURL);
   } else if (selector === "drink") {
-    getCocktail();
+    getCocktail(searchInput);
   } else {
   }
   $("#searchInput").val("");
