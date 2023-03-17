@@ -260,7 +260,7 @@ function advSearchFunction(data) {
       maxResults = 3;
       obj["parameter"] = `&number=${maxResults}`;
       searchParamArr.push(obj);
-    } else if (maxResults > 0 && maxResults < 100) {
+    } else if (maxResults > 0 && maxResults < 25) {
       let obj = {};
       obj["parameter"] = `&number=${maxResults}`;
       searchParamArr.push(obj);
