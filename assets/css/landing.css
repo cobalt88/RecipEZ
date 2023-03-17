@@ -3,6 +3,8 @@ body {
   background: #eff3f4;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  max-width: 1800px;
+  margin: auto;
 }
 
 :root {
@@ -13,6 +15,14 @@ body {
 
 .navbar-menu {
   color: #2a4729;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.container {
+  max-width: 100%;
 }
 
 .navbar-item img {
@@ -128,4 +138,15 @@ footer li:before {
   float: left;
   margin-left: -1.5em;
   color: #2a4729;
+}
+
+footer {
+  margin: auto;
+}
+
+#footer-column {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
