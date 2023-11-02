@@ -75,7 +75,7 @@
     </div>
 
     <!-- quick search form -->
-    <label for="sort">Quick Search:</label>
+    <label for="sort" id="search">Quick Search:</label>
     <select class="search" name="sort" id="sort">
       <option value="recipe">Food</option>
       <option value="drink">Drinks</option>
@@ -84,17 +84,18 @@
         id="searchInput"
         name="sort"
         placeholder="Search Recipes"
+        class="searchInput"
       />
     </select>
-    <button class="search" id="submit-btn">Search</button>
-    <button class="search" id="clear">Clear Search</button>
+    <button class="search-button" id="submit-btn">Search</button>
+    <button class="search-button" id="clear">Clear Search</button>
 
     <!-- advanced search for recipes -->
-    <details style="margin: 25px">
+    <details style="margin: 25px" class="advanced-search-options">
       <summary>Advanced Search Options:</summary>
       <form name="advanced-recipe-search" action="">
         <h4>
-          Any fields left blank will not be used in the search parameters.
+          Any fields left blank will not be used to filter your search.
         </h4>
         <!-- same parameter as general search -->
         <label for="key-word">Search Key Word</label>
@@ -103,6 +104,7 @@
           type="text"
           name="key-word"
           placeholder="General search terms"
+          class="searchInput2"
         />
         <br />
         <!-- include cuisine type search - make this one a drop down menu -->
@@ -234,6 +236,7 @@
           type="text"
           name="include-ingredients"
           placeholder="Chicken, Broccoli, Carrots, ect."
+          class="searchInput2"
         />
         <br />
         <!-- exclude ingredients - anything the recipe must not have -->
@@ -243,6 +246,7 @@
           type="text"
           name="exclude-ingredients"
           placeholder="Anything you dont want the recipes to include"
+          class="searchInput2"
         />
         <br />
         <!-- meal type - check boxes or buttons of some kind -->
@@ -298,6 +302,7 @@
           type="text"
           name="max-prep"
           placeholder="Example: 30"
+          class="searchInput2"
         />
         <br />
         <!-- max carbs - numerical input in grams -->
@@ -307,6 +312,7 @@
           type="text"
           name="max-carbs"
           placeholder="Maximum amount of carbs in grams"
+          class="searchInput2"
         />
         <br />
         <!-- max calories - numerical input field -->
@@ -316,6 +322,7 @@
           type="text"
           name="max-cal"
           placeholder="Max number of calories per serving"
+          class="searchInput2"
         />
         <br />
         <!-- max sugar -->
@@ -325,6 +332,7 @@
           type="text"
           name="max-sugar"
           placeholder="Max sugar per serving (grams)"
+          class="searchInput2"
         />
         <br />
         <!-- number of results to return between 1 and 100 -->
@@ -334,6 +342,7 @@
           type="text"
           name="max-results"
           placeholder="Number of recipes from 1-25"
+          class="searchInput2"
         />
         <br />
         <!-- sort results option - make this a drop down menu -->
@@ -345,7 +354,7 @@
           <option value="calories">Calories</option>
         </select>
         <br />
-        <button type="button" id="adv-search-btn">Search</button>
+        <button type="button" id="adv-search-btn" class="search-button">Search</button>
       </form>
     </details>
 
@@ -358,15 +367,9 @@
     <footer class="footer">
       <div class="container">
         <div class="columns">
-          <div class="column is-3" id="footer-column">
-            <h2><strong>Navigation</strong></h2>
-            <ul class="footer-links">
-              <li><a href="#">To the top</a></li>
-              <li><a href="">Recipe</a></li>
-              <li><a href="./assets/subPages/about-us.html">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
+
+            Copyright&copy; 2023 RecipEZ. All Rights Reserved.
+
         </div>
       </div>
     </footer>
