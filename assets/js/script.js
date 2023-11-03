@@ -344,7 +344,7 @@ const spoonacularGetInfo = async (resultsArr) => {
 			resultsArr[i].fullInfo = data;
 			// once all promises are resolved and the above for loop completes, load the final version of the resultsArr into the load food cards function.
 			if (i === resultsArr.length - 1) {
-				hideLoader();
+				// hideLoader();
 				loadFoodCards(resultsArr);
 			}
 		}
@@ -466,7 +466,7 @@ $("#submit-btn").click(function () {
 	var selector = $(this).siblings("#sort").val();
 
 	if (selector === "recipe") {
-		let advSearchURL = `https://api.spoonacular.com/recipes/complexSearch?query=${searchInput}&number=3&apiKey=${spoonacular}`;
+		let advSearchURL = `https://api.spoonacular.com/recipes/complexSearch?query=${searchInput}&number=3&sort=random&apiKey=${spoonacular}`;
 		searchResultsContainer.innerHTML = "";
 		// spoontacularAdvSearch(advSearchURL);
 		spoonacularAdvSearch(advSearchURL);
@@ -503,13 +503,13 @@ $("#searchResults").click(function (event) {
 	}
 });
 
-function showLoader() {
-	document.getElementById("loader").style.display = "block";
-}
+// function showLoader() {
+// 	document.getElementById("loader").style.display = "block";
+// }
 
-function hideLoader() {
-	document.getElementById("loader").style.display = "none";
-}
+// function hideLoader() {
+// 	document.getElementById("loader").style.display = "none";
+// }
 
 //event listener for the advanced search form (food only)
 $("adv-search-btn").click(function () {
