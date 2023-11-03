@@ -291,10 +291,12 @@ function buildAdvSearchURL(searchParamArr) {
 
 const spoonacularAdvSearch = async (advSearchURL) => {
 	try {
+		showLoader();
 		let response = await fetch(advSearchURL);
 		let data = await response.json();
 		let resultsArr = data.results;
 		if (!resultsArr || resultsArr.length === 0) {
+			hideLoader();
 			// No results, display error message
 			const searchResults = document.getElementById("searchResults");
 			searchResults.innerHTML = '<p class="no-results">Sorry, no results were returned for that search.</p>';
@@ -306,6 +308,7 @@ const spoonacularAdvSearch = async (advSearchURL) => {
 
 		spoonacularIngredientsImg(resultsArr);
 	} catch (err) {
+		hideLoader();
 		console.error(`Error in adv search: ${err}`);
 	}
 };
@@ -496,7 +499,7 @@ $("#searchResults").click(function (event) {
 		let recipeId = target.dataset.recipeid;
 		saveRecipeId(recipeId);
 	} else {
-		console.log("nothing is logged");
+		// console.log("nothing is logged");
 	}
 });
 
