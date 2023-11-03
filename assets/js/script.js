@@ -13,7 +13,7 @@ var spoonacular = "2bb10ff172ca4ab1b575e13c4f01a5c6";
 function getCocktail(searchInput) {
 	var drinkAPI = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchInput;
 
-	showLoader();
+	// showLoader();
 	fetch(drinkAPI)
 		.then(function (response) {
 			if (response.status !== 200) {
@@ -24,7 +24,7 @@ function getCocktail(searchInput) {
 			response
 				.json()
 				.then(function (data) {
-					hideLoader(); // Hide the loading animation once the data is fetched
+					// hideLoader(); // Hide the loading animation once the data is fetched
 					// Check if the drinks array is empty or null
 					if (!data.drinks || data.drinks.length === 0) {
 						// No results, display error message
@@ -37,7 +37,7 @@ function getCocktail(searchInput) {
 					}
 				})
 				.then(function () {
-					hideLoader();
+					// hideLoader();
 					loadDrinkCards();
 				});
 		})
@@ -291,24 +291,24 @@ function buildAdvSearchURL(searchParamArr) {
 
 const spoonacularAdvSearch = async (advSearchURL) => {
 	try {
-		showLoader();
+		// showLoader();
 		let response = await fetch(advSearchURL);
 		let data = await response.json();
 		let resultsArr = data.results;
 		if (!resultsArr || resultsArr.length === 0) {
-			hideLoader();
+			// hideLoader();
 			// No results, display error message
 			const searchResults = document.getElementById("searchResults");
 			searchResults.innerHTML = '<p class="no-results">Sorry, no results were returned for that search.</p>';
 		} else {
 			// Process and display the results
 			searchResultsArr.push(data);
-			loadDrinkCards();
+			// loadDrinkCards();
 		}
 
 		spoonacularIngredientsImg(resultsArr);
 	} catch (err) {
-		hideLoader();
+		// hideLoader();
 		console.error(`Error in adv search: ${err}`);
 	}
 };
